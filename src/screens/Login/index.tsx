@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   View,
+  Switch,
   Text,
   SafeAreaView,
   Image,
@@ -22,10 +23,15 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
   const navigation = useNavigation();
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     fetchUsuarios();
   }, []);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   const handleButtonCadastrar = () => {
     setModalCadastro(true);
@@ -78,7 +84,11 @@ export const Login = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Image
-        source={require("../../assets/lol.jpg")}
+        source={
+          darkMode
+            ? require("../../assets/fundodark.jpg")
+            : require("../../assets/lol.jpg")
+        }
         style={[styles.backgroundImage, backgroundImageStyle]}
       />
       <View style={styles.areaLogin}>
@@ -87,14 +97,14 @@ export const Login = () => {
           placeholderTextColor="white"
           value={nickname}
           onChangeText={(t) => setNickname(t)}
-          style={styles.input}
+          style={[styles.input, darkMode && styles.inputDark]}
         />
         <LoginInput
           placeholder="Senha"
           placeholderTextColor="white"
           value={password}
           onChangeText={(t) => setPassword(t)}
-          style={styles.input}
+          style={[styles.input, darkMode && styles.inputDark]}
           secureTextEntry
         />
         <View>
@@ -104,11 +114,30 @@ export const Login = () => {
         </View>
         <LoginButton
           title="LOGIN"
-          style={styles.buttonLogin}
+          style={[styles.buttonLogin, darkMode && styles.buttonLoginDark]}
           styleText={styles.textButtonLogin}
           onPress={handleButtonLogin}
         />
       </View>
+      <View style={{ marginLeft: 25, top: 30 }}>
+        <Text
+          style={{
+            color: "white",
+            fontWeight: "bold",
+            zIndex: 2,
+          }}
+        >
+          DarkMode
+        </Text>
+
+        <Switch
+          value={darkMode}
+          onValueChange={toggleDarkMode}
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={darkMode ? "#4B0082" : "#f4f3f4"}
+        />
+      </View>
+
       {modalCadastro && (
         <ModalCadastro modal={modalCadastro} setModal={setModalCadastro} />
       )}

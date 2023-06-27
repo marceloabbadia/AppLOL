@@ -28,6 +28,9 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     color: "white",
   },
+  inputDark: {
+    backgroundColor: "black",
+  },
   textCadastrar: {
     fontSize: 15,
     padding: 5,
@@ -43,6 +46,10 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginVertical: 10,
   },
+  buttonLoginDark: {
+    backgroundColor: "black",
+  },
+
   textButtonLogin: {
     color: "white",
     fontWeight: "bold",
