@@ -6,6 +6,7 @@ import {
   Image,
   TouchableWithoutFeedback,
   ToastAndroid,
+  Platform,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { ModalCadastro } from "../../components/ModalCadastro";
@@ -54,11 +55,20 @@ export const Login = () => {
     //   }
   };
 
+  const backgroundImageStyle = Platform.select({
+    ios: {
+      height: "115%",
+    },
+    android: {
+      height: "100%",
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <Image
         source={require("../../assets/lol.jpg")}
-        style={styles.backgroundImage}
+        style={[styles.backgroundImage, backgroundImageStyle]}
       />
       <View style={styles.areaLogin}>
         <LoginInput
