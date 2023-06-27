@@ -5,6 +5,24 @@
       "email": "aa",
       "password": "a",
       "id": 1
+    },
+    {
+      "nickname": "Dddd",
+      "email": "ddd",
+      "password": "ssss",
+      "id": 2
+    },
+    {
+      "nickname": "B",
+      "email": "b",
+      "password": "bb",
+      "id": 3
+    },
+    {
+      "nickname": "Teste",
+      "email": "teste",
+      "password": "123",
+      "id": 4
     }
   ]
 }

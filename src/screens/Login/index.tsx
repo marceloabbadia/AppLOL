@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   Image,
   TouchableWithoutFeedback,
-  ToastAndroid,
   Platform,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -15,6 +14,7 @@ import { LoginInput } from "../../components/LoginInput";
 import { LoginButton } from "../../components/LoginButton";
 import { Usuario } from "../../services/apiLocal";
 import axios from "axios";
+import Toast from "react-native-root-toast";
 
 export const Login = () => {
   const [modalCadastro, setModalCadastro] = useState<boolean>(false);
@@ -41,22 +41,33 @@ export const Login = () => {
   };
 
   const handleButtonLogin = () => {
-    // const user = usuarios.find(
-    //   (user: Usuario) =>
-    //     user.nickname === nickname && user.password === password
-    //);
-    //   if (user) {
-    //     ToastAndroid.show("Login feito com sucesso!", ToastAndroid.SHORT);
-    navigation.navigate("Home" as never);
-    //     setNickname("");
-    //     setPassword("");
-    //   } else {
-    //     ToastAndroid.show("Nickname ou senha inválidos!", ToastAndroid.SHORT);
-    //   }
+    const user = usuarios.find(
+      (user: Usuario) =>
+        user.nickname === nickname && user.password === password
+    );
+    if (user) {
+      Toast.show("Login feito com sucesso!", {
+        duration: Toast.durations.SHORT,
+        position: Toast.positions.BOTTOM,
+        shadow: true,
+        animation: true,
+        hideOnPress: true,
+        delay: 0,
+      });
+      navigation.navigate("Home" as never);
+      setNickname("");
+      setPassword("");
+    } else {
+      Toast.show("Nickname ou senha inválidos!", {
+        duration: Toast.durations.SHORT,
+        position: Toast.positions.BOTTOM,
+      });
+    }
   };
 
   const backgroundImageStyle = Platform.select({
     ios: {
+      top: 50,
       height: "115%",
     },
     android: {
