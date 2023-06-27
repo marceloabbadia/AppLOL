@@ -3,8 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Login } from "../screens/Login";
 import { Home } from "../screens/Home";
-import { ChatLol } from "../screens/ChatLol";
 import { Summoner } from "../screens/Summoner";
+import ChatLOL from "../screens/ChatLOL";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -28,6 +28,7 @@ const DrawerNavigate = () => {
         name="Home"
         component={Home}
         options={{
+          title: "HOME",
           drawerActiveBackgroundColor: "#399fff",
           drawerActiveTintColor: "white",
           drawerInactiveTintColor: "#399fff",
@@ -37,8 +38,8 @@ const DrawerNavigate = () => {
         }}
       />
       <Drawer.Screen
-        name="ChatLol"
-        component={ChatLol}
+        name="ChatLOL"
+        component={ChatLOL}
         options={{
           drawerActiveBackgroundColor: "#399fff",
           drawerActiveTintColor: "white",
