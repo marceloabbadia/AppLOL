@@ -1,6 +1,8 @@
 # appLOL
+
 Trabalho final do modulo de React Native com a criacao do appLOL
 
+criar um aplicativo e nele tenham o uso de useContext, dois tipos de navegaçao e armazenamento de dados no AsyncStorage e Cadastro com login no 
 
 
 <img width="665" alt="Captura de Tela 2023-06-27 às 17 20 36" src="https://github.com/marceloabbadia/appLOL/assets/112344339/7ef11a37-8f9e-4bf5-9689-8721d70a59b9">
