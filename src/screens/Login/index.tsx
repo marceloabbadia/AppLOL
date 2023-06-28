@@ -92,6 +92,7 @@ export const Login = () => {
         <LoginInput
           placeholder="Nickname"
           placeholderTextColor="white"
+          autoCapitalize="none"
           value={nickname}
           onChangeText={(t) => setNickname(t)}
           style={[styles.input, darkMode && styles.inputDark]}

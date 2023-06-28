@@ -12,6 +12,7 @@ export function Home() {
     undefined
   );
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+  const [greetings, setGreetings] = useState<string>("Bom dia");
 
   const route = useRoute();
   const name = (route.params as { nickname: string })?.nickname || "";
@@ -29,6 +30,17 @@ export function Home() {
     }
 
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const horaDeAgora = new Date().getHours();
+    if (horaDeAgora < 12) {
+      setGreetings("Bom dia,");
+    } else if (horaDeAgora >= 12 && horaDeAgora < 18) {
+      setGreetings("Bom tarde,");
+    } else {
+      setGreetings("Boa noite,");
+    }
   }, []);
 
   const renderChampion = ({ item }: { item: Champion }) => {
@@ -72,10 +84,10 @@ export function Home() {
         />
         <View>
           <Text style={[styles.topText, darkMode && styles.topTextDark]}>
-            Boa Tarde,
+            {greetings}
           </Text>
           <Text style={[styles.topText, darkMode && styles.topTextDark]}>
-            {name}!
+            {name}
           </Text>
         </View>
 
