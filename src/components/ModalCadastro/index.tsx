@@ -15,11 +15,15 @@ import Toast from "react-native-root-toast";
 interface ModalCadastroProps extends ModalProps {
   modal: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  usuarios: Usuario[];
+  setUsuarios: (value: React.SetStateAction<Usuario[]>) => void
 }
 
 export const ModalCadastro = ({
   modal,
   setModal,
+  usuarios,
+  setUsuarios,
   ...rest
 }: ModalCadastroProps) => {
   const [nickname, setNickname] = useState("");
@@ -27,30 +31,31 @@ export const ModalCadastro = ({
   const [password, setPassword] = useState("");
 
   const handleAddUsuario = async () => {
-    try {
-      const usuario: Usuario = {
+  try {
+    const usuario: Usuario = {
         nickname,
         email,
-        password,
-      };
-
-      await createUserApi(usuario);
-      setModal(false);
-      Toast.show("Usuário cadastrado com sucesso!", {
-        duration: Toast.durations.SHORT,
-        position: Toast.positions.BOTTOM,
-        shadow: true,
-        animation: true,
-        hideOnPress: true,
-        delay: 0,
-      });
+        password
+    };
+    await createUserApi(usuario);
+    setModal(false);
+    Toast.show("Usuário cadastrado com sucesso!", {
+      duration: Toast.durations.SHORT,
+      position: Toast.positions.BOTTOM,
+      shadow: true,
+      animation: true,
+      hideOnPress: true,
+      delay: 0,
+    });
+    setUsuarios([...usuarios, usuario])
     } catch (err: any) {
       Toast.show(err.message, {
         duration: Toast.durations.SHORT,
         position: Toast.positions.BOTTOM,
       });
     }
-  };
+};
+  
   return (
     <Modal
       animationType="fade"
@@ -70,6 +75,7 @@ export const ModalCadastro = ({
             placeholder="Nickname"
             placeholderTextColor="#399FFF"
             value={nickname}
+            autoCapitalize="none"
             onChangeText={(t) => setNickname(t)}
             style={styles.input}
           />

@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const apiLocal = axios.create({
@@ -11,6 +9,12 @@ export interface Usuario {
   nickname: string;
   email: string;
   password: string;
+}
+
+export function getUsuarios() {
+  const url = "/Usuarios";
+
+  return apiLocal.get(url);
 }
 
 export const createUserApi = async (usuario: Usuario): Promise<Usuario[]> => {

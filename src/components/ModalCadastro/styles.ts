@@ -42,5 +42,4 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 15,
   },
-  // Resto dos estilos do modal
 });

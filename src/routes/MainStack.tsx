@@ -3,8 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Login } from "../screens/Login";
 import { Home } from "../screens/Home";
-import { Summoner } from "../screens/Summoner";
 import ChatLOL from "../screens/ChatLOL";
+import { Champion } from "../screens/Champion";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -28,6 +28,8 @@ const DrawerNavigate = () => {
         name="Home"
         component={Home}
         options={{
+          headerTransparent: true,
+          headerTitle: "",
           title: "HOME",
           drawerActiveBackgroundColor: "#399fff",
           drawerActiveTintColor: "white",
@@ -41,6 +43,9 @@ const DrawerNavigate = () => {
         name="ChatLOL"
         component={ChatLOL}
         options={{
+          headerTransparent: true,
+          headerTitle: "",
+          title: "CHAT-LOL",
           drawerActiveBackgroundColor: "#399fff",
           drawerActiveTintColor: "white",
           drawerInactiveTintColor: "#399fff",
@@ -50,9 +55,12 @@ const DrawerNavigate = () => {
         }}
       />
       <Drawer.Screen
-        name="Summoner"
-        component={Summoner}
+        name="Champion"
+        component={Champion}
         options={{
+          headerTransparent: true,
+          headerTitle: "",
+          title: "CHAMPION",
           drawerActiveBackgroundColor: "#399fff",
           drawerActiveTintColor: "white",
           drawerInactiveTintColor: "#399fff",
@@ -66,6 +74,9 @@ const DrawerNavigate = () => {
         component={Login}
         options={{
           headerShown: false,
+          headerTransparent: true,
+          headerTitle: "",
+          title: "LOG OUT",
           drawerActiveBackgroundColor: "#399fff",
           drawerActiveTintColor: "white",
           drawerInactiveTintColor: "#399fff",

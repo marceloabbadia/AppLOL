@@ -13,7 +13,7 @@ import { ModalCadastro } from "../../components/ModalCadastro";
 import { styles } from "./styles";
 import { LoginInput } from "../../components/LoginInput";
 import { LoginButton } from "../../components/LoginButton";
-import { Usuario } from "../../services/apiLocal";
+import { Usuario, getUsuarios } from "../../services/apiLocal";
 import axios from "axios";
 import Toast from "react-native-root-toast";
 import { DarkModeContext } from "../../Context/darkModelContext";
@@ -36,7 +36,7 @@ export const Login = () => {
 
   const fetchUsuarios = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/Usuarios");
+      const response = await getUsuarios();
       setUsuarios(response.data);
     } catch (error) {
       console.log("Erro ao obter a lista de usuários:", error);
@@ -57,7 +57,7 @@ export const Login = () => {
         hideOnPress: true,
         delay: 0,
       });
-      navigation.navigate("Home" as never);
+      navigation.navigate("Home", { nickname });
       setNickname("");
       setPassword("");
     } else {
@@ -136,7 +136,12 @@ export const Login = () => {
       </View>
 
       {modalCadastro && (
-        <ModalCadastro modal={modalCadastro} setModal={setModalCadastro} />
+        <ModalCadastro
+          modal={modalCadastro}
+          setModal={setModalCadastro}
+          usuarios={usuarios}
+          setUsuarios={setUsuarios}
+        />
       )}
     </SafeAreaView>
   );

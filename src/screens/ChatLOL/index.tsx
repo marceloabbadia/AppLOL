@@ -119,7 +119,7 @@ const ChatLOL = () => {
   };
 
   return (
-    <View style={{ height: "90%" }}>
+    <View style={{ height: "85%", top: 100 }}>
       <View
         style={{
           backgroundColor: "#F5F5F5",
@@ -131,8 +131,10 @@ const ChatLOL = () => {
       <Text
         style={{
           fontSize: 40,
-          paddingLeft: 20,
-          fontWeight: "bold",
+          paddingLeft: 15,
+          paddingBottom: 10,
+          paddingTop: 10,
+          fontWeight: "900",
           textAlign: "left",
           backgroundColor: "rgb(218, 165, 0)",
           color: "black",
@@ -141,7 +143,7 @@ const ChatLOL = () => {
           borderStyle: "dashed",
         }}
       >
-        CHAT - L O L
+        CHAT-LOL
       </Text>
       <View style={[containerDark, styles.container]}>
         <View style={styles.imageContainer}>
@@ -151,7 +153,7 @@ const ChatLOL = () => {
           />
         </View>
       </View>
-      <View style={{ height: 430 }}>
+      <View style={{ height: 450 }}>
         <GiftedChat
           isTyping={typing}
           placeholder="Escreva sua pergunta aqui!"
@@ -185,8 +187,8 @@ const ChatLOL = () => {
       <View
         style={{
           position: "absolute",
-          top: 3,
-          right: 20,
+          top: 10,
+          right: 15,
         }}
       >
         <Text>DarkMode</Text>

@@ -5,7 +5,7 @@ import { MainStack } from "./src/routes/MainStack";
 import "react-native-gesture-handler";
 import { RootSiblingParent } from "react-native-root-siblings";
 import { DarkModeProvider } from "./src/Context/darkModelContext";
-import ChatLOL from "./src/screens/ChatLOL";
+import { FavoritesProvider } from "./src/Context/contextFavoritos";
 
 export default function App() {
   return (
@@ -13,7 +13,9 @@ export default function App() {
       <StatusBar hidden={false} translucent={false} style="light" />
       <DarkModeProvider>
         <RootSiblingParent>
-          <MainStack />
+          <FavoritesProvider>
+            <MainStack />
+          </FavoritesProvider>
         </RootSiblingParent>
       </DarkModeProvider>
     </NavigationContainer>
