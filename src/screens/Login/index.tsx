@@ -14,7 +14,6 @@ import { styles } from "./styles";
 import { LoginInput } from "../../components/LoginInput";
 import { LoginButton } from "../../components/LoginButton";
 import { Usuario, getUsuarios } from "../../services/apiLocal";
-import axios from "axios";
 import Toast from "react-native-root-toast";
 import { DarkModeContext } from "../../Context/darkModelContext";
 

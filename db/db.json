@@ -35,6 +35,24 @@
       "email": "ggg",
       "password": "123",
       "id": 6
+    },
+    {
+      "nickname": "jessica",
+      "email": "teste123",
+      "password": "123",
+      "id": 7
+    },
+    {
+      "nickname": "marcelopintoiriadeabbadia",
+      "email": "teste1234",
+      "password": "123",
+      "id": 8
+    },
+    {
+      "nickname": "troxa",
+      "email": "123",
+      "password": "123",
+      "id": 9
     }
   ]
 }

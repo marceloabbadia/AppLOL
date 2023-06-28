@@ -1,19 +1,27 @@
 import { useContext, useEffect, useState } from "react";
-import { Text, View, Image, TouchableOpacity, FlatList } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  FlatList,
+  TouchableWithoutFeedback,
+  Switch,
+} from "react-native";
 import { styles } from "./styles";
 import { getChampions, Champion, ChampionData } from "../../services/api";
 import { DarkModeContext } from "../../Context/darkModelContext";
 import { useRoute } from "@react-navigation/native";
 import { useFavorites } from "../../Context/contextFavoritos";
-import { ScrollView, Switch } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 export function Home() {
+  const navigation = useNavigation();
   const [championData, setChampionData] = useState<ChampionData | undefined>(
     undefined
   );
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   const [greetings, setGreetings] = useState<string>("Bom dia");
-
   const route = useRoute();
   const name = (route.params as { nickname: string })?.nickname || "";
 
@@ -43,20 +51,18 @@ export function Home() {
     }
   }, []);
 
+  const [selectedChampion, setSelectedChampion] = useState<
+    Champion | undefined
+  >(undefined);
   const renderChampion = ({ item }: { item: Champion }) => {
     const isFavorite = favorites.some((fav) => fav.name === item.name);
-
-    const handleChampionPress = () => {
-      if (isFavorite) {
-        removeFavorite(item);
-      } else {
-        addFavorite(item);
-      }
-    };
     return (
       <TouchableOpacity
         style={styles.championItem}
-        onPress={handleChampionPress}
+        onPress={() => {
+          setSelectedChampion(item);
+          navigation.navigate("ChampionScreen", { champion: item });
+        }}
       >
         {isFavorite && (
           <Image
@@ -64,9 +70,10 @@ export function Home() {
             style={styles.favoriteStar}
           />
         )}
+
         <Image
           source={{
-            uri: `http://ddragon.leagueoflegends.com/cdn/12.6.1/img/champion/${item.image.full}`,
+            uri: `http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/${item.image.full}`,
           }}
           style={styles.championImage}
         />
@@ -74,7 +81,6 @@ export function Home() {
       </TouchableOpacity>
     );
   };
-
   return (
     <View style={[styles.container, darkMode && styles.containerDark]}>
       <View style={styles.topArea}>
@@ -91,7 +97,7 @@ export function Home() {
           </Text>
         </View>
 
-        <View style={{ position: "absolute", top: 50 }}>
+        <View style={{ position: "absolute", top: 40 }}>
           <Switch
             value={darkMode}
             onValueChange={toggleDarkMode}
@@ -106,7 +112,7 @@ export function Home() {
       {championData && (
         <FlatList
           data={Object.values(championData.data)}
-          renderItem={renderChampion}
+          renderItem={({ item }) => renderChampion({ item })}
           keyExtractor={(item: Champion) => item.name}
           numColumns={4}
           showsVerticalScrollIndicator={false}

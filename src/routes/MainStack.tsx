@@ -4,7 +4,7 @@ import { DrawerItem, createDrawerNavigator } from "@react-navigation/drawer";
 import { Login } from "../screens/Login";
 import { Home } from "../screens/Home";
 import ChatLOL from "../screens/ChatLOL";
-import { Champion } from "../screens/Champion";
+import ChampionScreen from "../screens/Champion";
 import { DarkModeContext } from "../Context/darkModelContext";
 
 const Stack = createStackNavigator();
@@ -18,6 +18,7 @@ export const MainStack = () => {
     >
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Home" component={DrawerNavigate} />
+      <Stack.Screen name="ChampionScreen" component={ChampionScreen} />
     </Stack.Navigator>
   );
 };
@@ -53,14 +54,7 @@ const DrawerNavigate = () => {
           title: "CHAT-LOL",
         }}
       />
-      <Drawer.Screen
-        name="Champion"
-        component={Champion}
-        options={{
-          ...drawerScreenOptions,
-          title: "CHAMPION",
-        }}
-      />
+
       <Drawer.Screen
         name="Log Out"
         component={Login}

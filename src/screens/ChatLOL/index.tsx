@@ -115,6 +115,7 @@ const ChatLOL = () => {
       setTyping(false);
     } catch (error) {
       console.log(error);
+      setTyping(false);
     }
   };
 
