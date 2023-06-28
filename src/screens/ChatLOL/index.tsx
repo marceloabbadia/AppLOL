@@ -1,11 +1,29 @@
 import { View, Text, Image, StyleSheet } from "react-native";
-import { useState } from "react";
-import { GiftedChat, IMessage } from "react-native-gifted-chat";
+import React, { useContext, useState } from "react";
+import {
+  GiftedChat,
+  IMessage,
+  Bubble,
+  InputToolbar,
+} from "react-native-gifted-chat";
 import { styles } from "./styles";
+import { DarkModeContext } from "../../Context/darkModelContext";
+import { Switch } from "react-native-gesture-handler";
 
 const ChatLOL = () => {
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState<IMessage[]>([]);
+  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+
+  const chatStyle = {
+    backgroundColor1: darkMode ? "#000000" : "#6495ED",
+    backgroundColor2: darkMode ? "#DAA500" : "#0000FF",
+    color: darkMode ? "#FFFFFF" : "#FFFFFF",
+  };
+
+  const containerDark = {
+    backgroundColor: darkMode ? "#000000" : "#FFFFFF",
+  };
 
   const API_KEY = "sua chave criada no chat GPT";
 
@@ -105,19 +123,17 @@ const ChatLOL = () => {
       <View
         style={{
           backgroundColor: "#F5F5F5",
-          padding: 10,
           alignItems: "center",
           justifyContent: "center",
           borderBottomWidth: 1,
-          marginTop: 100,
-          marginBottom: 5,
         }}
       ></View>
       <Text
         style={{
-          fontSize: 35,
+          fontSize: 40,
+          paddingLeft: 20,
           fontWeight: "bold",
-          textAlign: "center",
+          textAlign: "left",
           backgroundColor: "rgb(218, 165, 0)",
           color: "black",
           borderColor: "black",
@@ -127,7 +143,7 @@ const ChatLOL = () => {
       >
         CHAT - L O L
       </Text>
-      <View style={styles.container}>
+      <View style={[containerDark, styles.container]}>
         <View style={styles.imageContainer}>
           <Image
             source={require("../../assets/fundo.png")}
@@ -135,14 +151,52 @@ const ChatLOL = () => {
           />
         </View>
       </View>
-      <GiftedChat
-        isTyping={typing}
-        placeholder="Escreva sua pergunta aqui!"
-        alwaysShowSend={true}
-        messages={messages}
-        onSend={(newMessages) => handleSend(newMessages)}
-        user={{ _id: 1 }}
-      />
+      <View style={{ height: 430 }}>
+        <GiftedChat
+          isTyping={typing}
+          placeholder="Escreva sua pergunta aqui!"
+          alwaysShowSend={true}
+          messages={messages}
+          onSend={(newMessages) => handleSend(newMessages)}
+          user={{ _id: 1 }}
+          renderBubble={(props) => (
+            <Bubble
+              {...props}
+              wrapperStyle={{
+                left: {
+                  backgroundColor: chatStyle.backgroundColor1,
+                },
+                right: {
+                  backgroundColor: chatStyle.backgroundColor2,
+                },
+              }}
+              textStyle={{
+                left: {
+                  color: chatStyle.color,
+                },
+                right: {
+                  color: chatStyle.color,
+                },
+              }}
+            />
+          )}
+        />
+      </View>
+      <View
+        style={{
+          position: "absolute",
+          top: 3,
+          right: 20,
+        }}
+      >
+        <Text>DarkMode</Text>
+        <Switch
+          value={darkMode}
+          onValueChange={toggleDarkMode}
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={darkMode ? "#4B0082" : "#f4f3f4"}
+        />
+      </View>
     </View>
   );
 };

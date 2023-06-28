@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   View,
   Switch,
@@ -16,6 +16,7 @@ import { LoginButton } from "../../components/LoginButton";
 import { Usuario } from "../../services/apiLocal";
 import axios from "axios";
 import Toast from "react-native-root-toast";
+import { DarkModeContext } from "../../Context/darkModelContext";
 
 export const Login = () => {
   const [modalCadastro, setModalCadastro] = useState<boolean>(false);
@@ -23,15 +24,11 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
   const navigation = useNavigation();
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
     fetchUsuarios();
   }, []);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
 
   const handleButtonCadastrar = () => {
     setModalCadastro(true);

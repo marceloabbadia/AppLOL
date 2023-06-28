@@ -3,7 +3,6 @@ import {
   Modal,
   ModalProps,
   Text,
-  ToastAndroid,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
@@ -11,6 +10,7 @@ import { LoginInput } from "../LoginInput";
 import { LoginButton } from "../LoginButton";
 import { styles } from "./styles";
 import { createUserApi, Usuario } from "../../services/apiLocal";
+import Toast from "react-native-root-toast";
 
 interface ModalCadastroProps extends ModalProps {
   modal: boolean;
@@ -27,19 +27,30 @@ export const ModalCadastro = ({
   const [password, setPassword] = useState("");
 
   const handleAddUsuario = async () => {
-    const usuario: Usuario = {
-      nickname,
-      email,
-      password,
-    };
+    try {
+      const usuario: Usuario = {
+        nickname,
+        email,
+        password,
+      };
 
-    await createUserApi(usuario);
-    setModal(false);
-    //     ToastAndroid.show("Usuário cadastrado com sucesso!", ToastAndroid.SHORT);
-
-    //     ToastAndroid.show(err.message, ToastAndroid.SHORT);
+      await createUserApi(usuario);
+      setModal(false);
+      Toast.show("Usuário cadastrado com sucesso!", {
+        duration: Toast.durations.SHORT,
+        position: Toast.positions.BOTTOM,
+        shadow: true,
+        animation: true,
+        hideOnPress: true,
+        delay: 0,
+      });
+    } catch (err: any) {
+      Toast.show(err.message, {
+        duration: Toast.durations.SHORT,
+        position: Toast.positions.BOTTOM,
+      });
+    }
   };
-
   return (
     <Modal
       animationType="fade"

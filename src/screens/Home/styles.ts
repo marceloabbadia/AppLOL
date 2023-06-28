@@ -8,6 +8,12 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 32,
   },
+  containerDark: {
+    flex: 1,
+    backgroundColor: "black",
+    paddingHorizontal: 16,
+    paddingTop: 32,
+  },
   championItem: {
     flex: 1,
     alignItems: "center",
