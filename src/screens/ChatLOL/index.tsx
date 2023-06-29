@@ -25,7 +25,7 @@ const ChatLOL = () => {
     backgroundColor: darkMode ? "#000000" : "#FFFFFF",
   };
 
-  const API_KEY = "sua chave criada no chat GPT";
+  const API_KEY = "";
 
   const handleSend = async (newMessages: IMessage[] = []) => {
     try {

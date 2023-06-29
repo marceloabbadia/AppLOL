@@ -34,6 +34,12 @@
       "password": "123",
       "champions": [],
       "id": 5
+    },
+    {
+      "nickname": "eeee",
+      "email": "eeee",
+      "password": "eee",
+      "id": 6
     }
   ]
 }

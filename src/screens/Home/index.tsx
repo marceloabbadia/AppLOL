@@ -5,6 +5,8 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  SafeAreaView,
+  Platform,
   Switch,
 } from "react-native";
 import { styles } from "./styles";
@@ -22,8 +24,17 @@ export function Home() {
   );
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   const [greetings, setGreetings] = useState<string>("Bom dia");
-
   const { favorites, nicknameHome } = useFavorites();
+
+  const backgroundImageStyle = Platform.select({
+    ios: {
+      top: -150,
+      height: "150%",
+    },
+    android: {
+      height: "100%",
+    },
+  });
 
   useEffect(() => {
     async function fetchData() {
@@ -80,42 +91,61 @@ export function Home() {
     );
   };
   return (
-    <View style={[styles.container, darkMode && styles.containerDark]}>
-      <View style={styles.topArea}>
-        <Image
-          source={require("../../assets/fundo.png")}
-          style={styles.topImage}
-        />
-        <View>
-          <Text style={[styles.topText, darkMode && styles.topTextDark]}>
-            {greetings}
-          </Text>
-          <Text style={[styles.topText, darkMode && styles.topTextDark]}>
-            {nicknameHome}
-          </Text>
-        </View>
+    <SafeAreaView style={styles.containerPrincipal}>
+      <Image
+        source={
+          darkMode
+            ? require("../../assets/fundodark.jpg")
+            : require("../../assets/lol.jpg")
+        }
+        style={[styles.backgroundImage, backgroundImageStyle]}
+      />
 
-        <View style={{ position: "absolute", top: 40 }}>
-          <Switch
-            value={darkMode}
-            onValueChange={toggleDarkMode}
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
-            thumbColor={darkMode ? "#4B0082" : "#f4f3f4"}
+      <View style={[styles.container, darkMode && styles.containerDark]}>
+        <View style={styles.topArea}>
+          <Image
+            source={require("../../assets/fundo.png")}
+            style={styles.topImage}
           />
-          <Text style={[styles.topText1, darkMode && styles.topTextDark1]}>
-            Dark Mode
-          </Text>
+          <View>
+            <Text style={[styles.topText, darkMode && styles.topTextDark]}>
+              {greetings}
+            </Text>
+            <Text style={[styles.topText, darkMode && styles.topTextDark]}>
+              {nicknameHome}
+            </Text>
+          </View>
+
+          <View
+            style={{
+              position: "absolute",
+              top: 20,
+              backgroundColor: "rgba( 9, 20, 40, 0.2)",
+              borderRadius: 90,
+              marginLeft: 5,
+            }}
+          >
+            <Switch
+              value={darkMode}
+              onValueChange={toggleDarkMode}
+              trackColor={{ false: "#767577", true: "#81b0ff" }}
+              thumbColor={darkMode ? "#4B0082" : "#f4f3f4"}
+            />
+            <Text style={[styles.topText1, darkMode && styles.topTextDark1]}>
+              Dark Mode
+            </Text>
+          </View>
         </View>
+        {championData && (
+          <FlatList
+            data={Object.values(championData.data)}
+            renderItem={({ item }) => renderChampion({ item })}
+            keyExtractor={(item: Champion) => item.name}
+            numColumns={4}
+            showsVerticalScrollIndicator={false}
+          />
+        )}
       </View>
-      {championData && (
-        <FlatList
-          data={Object.values(championData.data)}
-          renderItem={({ item }) => renderChampion({ item })}
-          keyExtractor={(item: Champion) => item.name}
-          numColumns={4}
-          showsVerticalScrollIndicator={false}
-        />
-      )}
-    </View>
+    </SafeAreaView>
   );
 }

@@ -11,6 +11,7 @@ import { LoginButton } from "../LoginButton";
 import { styles } from "./styles";
 import { createUserApi, Usuario } from "../../services/apiLocal";
 import Toast from "react-native-root-toast";
+import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 
 interface ModalCadastroProps extends ModalProps {
   modal: boolean;
@@ -37,13 +38,12 @@ export const ModalCadastro = ({
         nickname,
         email,
         password,
-        champions: championFav,
       };
       await createUserApi(usuario);
       setModal(false);
       Toast.show("Usuário cadastrado com sucesso!", {
         duration: Toast.durations.SHORT,
-        position: Toast.positions.CENTER,
+        position: Toast.positions.BOTTOM,
         shadow: true,
         animation: true,
         hideOnPress: true,
@@ -53,7 +53,7 @@ export const ModalCadastro = ({
     } catch (err: any) {
       Toast.show(err.message, {
         duration: Toast.durations.SHORT,
-        position: Toast.positions.CENTER,
+        position: Toast.positions.BOTTOM,
       });
     }
   };
@@ -70,12 +70,18 @@ export const ModalCadastro = ({
     >
       <View style={styles.modal}>
         <View style={styles.modalContainer}>
-          <TouchableWithoutFeedback onPress={() => setModal(false)}>
-            <Text style={styles.textClose}>X</Text>
-          </TouchableWithoutFeedback>
+          <View style={styles.ContainerClose}>
+            <TouchableWithoutFeedback onPress={() => setModal(false)}>
+              <AntDesign name="closecircleo" size={30} color="red" />
+            </TouchableWithoutFeedback>
+          </View>
+          <View style={styles.SIGNIN}>
+            <FontAwesome5 name="user-plus" size={24} color="#C89B3C" />
+            <Text style={styles.SignInTXT}> CADASTRE-SE</Text>
+          </View>
           <LoginInput
             placeholder="Nickname"
-            placeholderTextColor="#399FFF"
+            placeholderTextColor="#fff"
             value={nickname}
             autoCapitalize="none"
             onChangeText={(t) => setNickname(t)}
@@ -83,7 +89,7 @@ export const ModalCadastro = ({
           />
           <LoginInput
             placeholder="Email"
-            placeholderTextColor="#399FFF"
+            placeholderTextColor="#fff"
             value={email}
             onChangeText={(t) => setEmail(t)}
             autoCapitalize="none"
@@ -92,7 +98,7 @@ export const ModalCadastro = ({
           />
           <LoginInput
             placeholder="Senha"
-            placeholderTextColor="#399FFF"
+            placeholderTextColor="#fff"
             value={password}
             onChangeText={(t) => setPassword(t)}
             style={styles.input}

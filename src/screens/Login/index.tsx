@@ -18,6 +18,7 @@ import Toast from "react-native-root-toast";
 import { DarkModeContext } from "../../Context/darkModelContext";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackNavigatorProps } from "../../routes/MainStack";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFavorites } from "../../Context/contextFavoritos";
 
 export const Login = () => {
@@ -54,23 +55,21 @@ export const Login = () => {
     if (user) {
       Toast.show("Login feito com sucesso!", {
         duration: Toast.durations.SHORT,
-        position: Toast.positions.CENTER,
+        position: Toast.positions.BOTTOM,
         shadow: true,
         animation: true,
         hideOnPress: true,
         delay: 0,
       });
       setNicknameHome(user.nickname);
-      navigation.navigate("Home", {});
+      navigation.navigate("Home", { nickname });
       setNickname("");
       setPassword("");
     } else {
       Toast.show("Nickname ou senha inválidos!", {
         duration: Toast.durations.SHORT,
-        position: Toast.positions.CENTER,
+        position: Toast.positions.BOTTOM,
       });
-      setNickname("");
-      setPassword("");
     }
   };
 
@@ -94,7 +93,12 @@ export const Login = () => {
         }
         style={[styles.backgroundImage, backgroundImageStyle]}
       />
+
       <View style={styles.areaLogin}>
+        <View style={styles.SIGNIN}>
+          <FontAwesome name="user-o" size={24} color="#C89B3C" />
+          <Text style={styles.SignInTXT}> SIGN IN</Text>
+        </View>
         <LoginInput
           placeholder="Nickname"
           placeholderTextColor="white"
@@ -111,7 +115,16 @@ export const Login = () => {
           style={[styles.input, darkMode && styles.inputDark]}
           secureTextEntry
         />
-        <View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ color: "#fff", fontSize: 14, fontWeight: "300" }}>
+            Não possui uma conta ?{" "}
+          </Text>
           <TouchableWithoutFeedback onPress={handleButtonCadastrar}>
             <Text style={styles.textCadastrar}>Cadastre-se</Text>
           </TouchableWithoutFeedback>
@@ -123,12 +136,29 @@ export const Login = () => {
           onPress={handleButtonLogin}
         />
       </View>
-      <View style={{ marginLeft: 25, top: 30 }}>
+      <View
+        style={{
+          alignItems: "center",
+          flexDirection: "row",
+          marginLeft: 0,
+          top: 90,
+          backgroundColor: "rgba(40, 67, 135, 0.5)",
+          borderWidth: 1,
+          borderRadius: 20,
+          borderColor: "rgba(4, 59, 92, 0.5)",
+        }}
+      >
+        <MaterialCommunityIcons
+          name="theme-light-dark"
+          size={28}
+          color="white"
+        />
         <Text
           style={{
             color: "white",
             fontWeight: "bold",
             zIndex: 2,
+            padding: 10,
           }}
         >
           DarkMode
