@@ -18,10 +18,11 @@ export const styles = StyleSheet.create({
   areaLogin: {
     marginTop: 0,
     marginLeft: 0,
-    width: "80%",
+    width: "85%",
     height: "45%",
-    paddingHorizontal: 10,
-    backgroundColor: "rgba(30, 35, 40, 0.9)",
+    paddingHorizontal: 20,
+    backgroundColor: "#16141F",
+    //"rgba(30, 35, 40, 0.9)",
     borderWidth: 1.2,
     borderRadius: 20,
     borderColor: "#785A28",
@@ -29,10 +30,12 @@ export const styles = StyleSheet.create({
   input: {
     paddingVertical: 10,
     paddingLeft: 15,
-    backgroundColor: "#c1c1c1",
+    backgroundColor: "#221F30",
     marginVertical: 20,
     borderRadius: 10,
-    color: "black",
+    color: "#FFF",
+    borderColor: "#C89B3C",
+    borderWidth: 0.5,
   },
   inputDark: {
     backgroundColor: "#0A1428",
@@ -70,7 +73,7 @@ export const styles = StyleSheet.create({
     marginVertical: 10,
   },
   buttonLoginDark: {
-    backgroundColor: "#0A1428",
+    backgroundColor: "#785A28",
   },
 
   textButtonLogin: {

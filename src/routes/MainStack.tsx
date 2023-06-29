@@ -36,11 +36,11 @@ const DrawerNavigate = () => {
   const drawerScreenOptions = {
     headerTransparent: true,
     headerTitle: "",
-    drawerActiveBackgroundColor: darkMode ? "#FFD700" : "#399fff",
+    drawerActiveBackgroundColor: darkMode ? "#785A28" : "#399fff",
     drawerActiveTintColor: darkMode ? "#000000" : "#FFFFFF",
     drawerInactiveTintColor: darkMode ? "#FFFFFF" : "#399fff",
     drawerStyle: {
-      backgroundColor: darkMode ? "#000000" : "#FFFFFF",
+      backgroundColor: darkMode ? "#16141F" : "#FFFFFF",
     },
   };
   return (

@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image } from "react-native";
 import React, { useContext, useState } from "react";
 import {
   GiftedChat,
@@ -25,7 +25,7 @@ const ChatLOL = () => {
     backgroundColor: darkMode ? "#000000" : "#FFFFFF",
   };
 
-  const API_KEY = "";
+  const API_KEY = "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";
 
   const handleSend = async (newMessages: IMessage[] = []) => {
     try {
@@ -41,7 +41,7 @@ const ChatLOL = () => {
 
       const keywords = [
         "Lol",
-        "leagueOfLegions",
+        "leagueOfLegend",
         "gameLOL",
         "lol",
         "heróis",

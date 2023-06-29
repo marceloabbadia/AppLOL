@@ -1,21 +1,12 @@
 import React from "react";
-import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import { Champion } from "../../services/ChampionApi";
 import { useNavigation } from "@react-navigation/native";
 import { useFavorites } from "../../Context/contextFavoritos";
 import { styles } from "./styles";
-import { ScrollView } from "react-native-gesture-handler";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackNavigatorProps } from "../../routes/MainStack";
-
-interface ChampionScreenProps {
-  route: {
-    params: {
-      champion: Champion;
-    };
-  };
-}
 
 const ChampionScreen: React.ComponentType = ({ route }: any) => {
   const { favorites, addFavorite, removeFavorite } = useFavorites();
@@ -36,8 +27,8 @@ const ChampionScreen: React.ComponentType = ({ route }: any) => {
             uri: `http://ddragon.leagueoflegends.com/cdn/13.12.1/img/spell/${spell.image.full}`,
           }}
           style={{
-            width: 60,
-            height: 60,
+            width: 80,
+            height: 80,
             margin: 7,
             borderWidth: 1,
             borderColor: "#C89B3C",
@@ -71,21 +62,41 @@ const ChampionScreen: React.ComponentType = ({ route }: any) => {
         </View>
         <ScrollView>
           <View style={styles.CHAMPcontainer}>
-            <Text style={styles.CHAMPName}>{champion.name}</Text>
+            <View
+              style={{
+                width: "80%",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <View>
+                <Text style={styles.CHAMPName}>{champion.name}</Text>
+                <Image
+                  source={{
+                    uri: `http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/${champion.image.full}`,
+                  }}
+                  style={{ width: 100, height: 100 }}
+                />
+              </View>
+              <View>
+                <Text style={styles.TituloBiografia}>BIOGRAFIA</Text>
+                <Text style={styles.CHAMPDescription}>{champion.blurb}</Text>
+              </View>
+            </View>
             <View style={styles.TextContainer}>
               <Text style={styles.CHAMPTitle}>{champion.title}</Text>
             </View>
-            <Text style={styles.TituloBiografia}>BIOGRAFIA</Text>
-            <Text style={styles.CHAMPDescription}>{champion.blurb}</Text>
           </View>
 
           <View style={styles.DivisaoHAB}>
             <Text style={styles.TXTDivisaoHAB}>HABILIDADES</Text>
-            <FlatList
-              data={champion.spells}
-              renderItem={({ item }) => renderChampionItem(item)}
-              keyExtractor={(item) => item.name}
-            />
+            {champion.spells.map(
+              (spell: {
+                name: string;
+                description: string;
+                image: { full: string };
+              }) => renderChampionItem(spell)
+            )}
           </View>
 
           <TouchableOpacity

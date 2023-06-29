@@ -52,6 +52,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     color: "black",
     marginTop: 20,
+    
   },
   buttonLogin: {
     paddingVertical: 12,

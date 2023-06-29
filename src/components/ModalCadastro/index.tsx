@@ -12,6 +12,7 @@ import { styles } from "./styles";
 import { createUserApi, Usuario } from "../../services/apiLocal";
 import Toast from "react-native-root-toast";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
+import { DarkModeContext } from "../../Context/darkModelContext";
 
 interface ModalCadastroProps extends ModalProps {
   modal: boolean;
@@ -31,6 +32,7 @@ export const ModalCadastro = ({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [championFav, setChampionFav] = useState([]);
+  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   const handleAddUsuario = async () => {
     try {

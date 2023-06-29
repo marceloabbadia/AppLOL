@@ -15,14 +15,15 @@ export const styles = StyleSheet.create({
     fontWeight: "600",
     paddingHorizontal: 5,
     paddingVertical: 5,
+    top: -20,
   },
 
   CHAMPDescription: {
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: "500",
     color: "#fff",
     paddingVertical: 30,
-    marginLeft: 7,
+    marginLeft: 20,
     marginRight: 20,
     paddingHorizontal: 7,
   },
@@ -43,15 +44,16 @@ export const styles = StyleSheet.create({
     backgroundColor: "#1E2328",
     alignItems: "flex-start",
     marginTop: 5,
+    top: -20,
   },
 
   CHAMPcontainer: {
-    flexDirection: "column",
     borderWidth: 1,
     borderColor: "#C89B3C",
     backgroundColor: "#1E2328",
     marginVertical: 10,
     borderRadius: 5,
+    marginHorizontal: 5,
   },
 
   HABcontainer: {
@@ -86,6 +88,8 @@ export const styles = StyleSheet.create({
 
   HABContentView: {
     flexDirection: "row",
+    alignItems: "center",
+    width: "80%",
   },
 
   HABTxtEnun: {
@@ -160,6 +164,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 0,
     paddingTop: 10,
+    marginLeft: 10,
+    width: "40%",
   },
 
   DivisaoHAB: {

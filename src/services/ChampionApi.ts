@@ -11,7 +11,6 @@ export interface ChampionData {
 }
 
 export interface Champion {
-  id: any;
   name: string;
   title: string;
   blurb: string;

@@ -40,6 +40,12 @@
       "email": "eeee",
       "password": "eee",
       "id": 6
+    },
+    {
+      "nickname": "treta",
+      "email": "dddd",
+      "password": "123",
+      "id": 7
     }
   ]
 }
