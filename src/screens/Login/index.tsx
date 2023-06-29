@@ -16,13 +16,15 @@ import { LoginButton } from "../../components/LoginButton";
 import { Usuario, getUsuarios } from "../../services/apiLocal";
 import Toast from "react-native-root-toast";
 import { DarkModeContext } from "../../Context/darkModelContext";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { StackNavigatorProps } from "../../routes/MainStack";
 
 export const Login = () => {
   const [modalCadastro, setModalCadastro] = useState<boolean>(false);
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<StackNavigatorProps>>();
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   useEffect(() => {

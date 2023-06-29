@@ -53,6 +53,20 @@
       "email": "123",
       "password": "123",
       "id": 9
+    },
+    {
+      "nickname": "campeao",
+      "email": "456",
+      "password": "123",
+      "champions": [],
+      "id": 10
+    },
+    {
+      "nickname": "jose",
+      "email": "jose",
+      "password": "123",
+      "champions": [],
+      "id": 11
     }
   ]
 }

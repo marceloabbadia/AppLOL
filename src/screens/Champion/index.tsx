@@ -3,6 +3,8 @@ import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
 import { Champion } from "../../services/ChampionApi";
 import { useNavigation } from "@react-navigation/native";
 import { useFavorites } from "../../Context/contextFavoritos";
+import { StackNavigatorProps } from "../../routes/MainStack";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 interface ChampionScreenProps {
   route: {
@@ -16,7 +18,7 @@ const ChampionScreen: React.ComponentType = ({ route }: any) => {
   const { favorites, addFavorite, removeFavorite } = useFavorites();
 
   const { champion } = route.params;
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<StackNavigatorProps>>();
   const renderChampionItem = (spell: {
     name: string;
     description: string;
@@ -53,7 +55,7 @@ const ChampionScreen: React.ComponentType = ({ route }: any) => {
         renderItem={({ item }) => renderChampionItem(item)}
         keyExtractor={(item) => item.name}
       />
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Home", {})}>
         <Text>back</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleFavoritePress}>

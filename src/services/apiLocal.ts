@@ -1,5 +1,6 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Champion } from "./api";
 
 const apiLocal = axios.create({
   baseURL: "http://localhost:3000",
@@ -9,6 +10,7 @@ export interface Usuario {
   nickname: string;
   email: string;
   password: string;
+  champions?: Champion[];
 }
 
 export function getUsuarios() {

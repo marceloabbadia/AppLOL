@@ -5,7 +5,6 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
-  TouchableWithoutFeedback,
   Switch,
 } from "react-native";
 import { styles } from "./styles";
@@ -14,9 +13,11 @@ import { DarkModeContext } from "../../Context/darkModelContext";
 import { useRoute } from "@react-navigation/native";
 import { useFavorites } from "../../Context/contextFavoritos";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigatorProps } from "../../routes/MainStack";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 export function Home() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<StackNavigatorProps>>();
   const [championData, setChampionData] = useState<ChampionData | undefined>(
     undefined
   );

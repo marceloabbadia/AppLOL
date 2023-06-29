@@ -1,14 +1,14 @@
 import { useState, ReactNode, createContext, useContext } from "react";
 import { Champion } from "../services/api";
 
-interface FavoritesContextData {
+export interface FavoritesContextData {
   favorites: Champion[];
   addFavorite: (champion: Champion) => void;
   removeFavorite: (champion: Champion) => void;
   isFavorite: (champion: Champion) => boolean;
 }
 
-const FavoritesContext = createContext<FavoritesContextData>({
+export const FavoritesContext = createContext<FavoritesContextData>({
   favorites: [],
   addFavorite: () => {},
   removeFavorite: () => {},
@@ -24,7 +24,7 @@ interface FavoritesProviderProps {
 export const FavoritesProvider: React.FC<FavoritesProviderProps> = ({
   children,
 }) => {
-  const [favorites, setFavorites] = useState<Champion[]>([]);
+  const [favorites, setFavorites] = useState([] as Champion[]);
 
   const addFavorite = (champion: Champion) => {
     const updatedFavorites = [...favorites, champion];

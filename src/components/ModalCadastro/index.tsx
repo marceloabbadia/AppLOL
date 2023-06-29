@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Modal,
   ModalProps,
@@ -11,12 +11,18 @@ import { LoginButton } from "../LoginButton";
 import { styles } from "./styles";
 import { createUserApi, Usuario } from "../../services/apiLocal";
 import Toast from "react-native-root-toast";
+import { Champion } from "../../services/api";
+import {
+  FavoritesContext,
+  FavoritesContextData,
+  useFavorites,
+} from "../../Context/contextFavoritos";
 
 interface ModalCadastroProps extends ModalProps {
   modal: boolean;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   usuarios: Usuario[];
-  setUsuarios: (value: React.SetStateAction<Usuario[]>) => void
+  setUsuarios: (value: React.SetStateAction<Usuario[]>) => void;
 }
 
 export const ModalCadastro = ({
@@ -29,33 +35,35 @@ export const ModalCadastro = ({
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [championFav, setChampionFav] = useState([]);
 
   const handleAddUsuario = async () => {
-  try {
-    const usuario: Usuario = {
+    try {
+      const usuario: Usuario = {
         nickname,
         email,
-        password
-    };
-    await createUserApi(usuario);
-    setModal(false);
-    Toast.show("Usuário cadastrado com sucesso!", {
-      duration: Toast.durations.SHORT,
-      position: Toast.positions.BOTTOM,
-      shadow: true,
-      animation: true,
-      hideOnPress: true,
-      delay: 0,
-    });
-    setUsuarios([...usuarios, usuario])
+        password,
+        champions: championFav,
+      };
+      await createUserApi(usuario);
+      setModal(false);
+      Toast.show("Usuário cadastrado com sucesso!", {
+        duration: Toast.durations.SHORT,
+        position: Toast.positions.BOTTOM,
+        shadow: true,
+        animation: true,
+        hideOnPress: true,
+        delay: 0,
+      });
+      setUsuarios([...usuarios, usuario]);
     } catch (err: any) {
       Toast.show(err.message, {
         duration: Toast.durations.SHORT,
         position: Toast.positions.BOTTOM,
       });
     }
-};
-  
+  };
+
   return (
     <Modal
       animationType="fade"

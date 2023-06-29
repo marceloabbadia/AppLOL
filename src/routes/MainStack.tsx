@@ -6,9 +6,16 @@ import { Home } from "../screens/Home";
 import ChatLOL from "../screens/ChatLOL";
 import ChampionScreen from "../screens/Champion";
 import { DarkModeContext } from "../Context/darkModelContext";
+import { Champion } from "../services/api";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<StackNavigatorProps>();
 const Drawer = createDrawerNavigator();
+
+export type StackNavigatorProps = {
+  Home: { nickname?: string };
+  Login: undefined;
+  ChampionScreen: { champion: Champion };
+};
 
 export const MainStack = () => {
   return (
