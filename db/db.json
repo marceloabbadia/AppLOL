@@ -1,72 +1,39 @@
 {
   "Usuarios": [
     {
-      "nickname": "A",
-      "email": "aa",
-      "password": "a",
+      "nickname": "teste",
+      "email": "teste",
+      "password": "123",
+      "champions": [],
       "id": 1
     },
     {
-      "nickname": "Dddd",
-      "email": "ddd",
-      "password": "ssss",
+      "nickname": "teste1",
+      "email": "111",
+      "password": "123",
+      "champions": [],
       "id": 2
     },
     {
-      "nickname": "B",
-      "email": "b",
-      "password": "bb",
+      "nickname": "teste2",
+      "email": "11133",
+      "password": "123",
+      "champions": [],
       "id": 3
-    },
-    {
-      "nickname": "Teste",
-      "email": "teste",
-      "password": "123",
-      "id": 4
-    },
-    {
-      "nickname": "marcelo",
-      "email": "ttt",
-      "password": "123",
-      "id": 5
-    },
-    {
-      "nickname": "marcelo1",
-      "email": "ggg",
-      "password": "123",
-      "id": 6
-    },
-    {
-      "nickname": "jessica",
-      "email": "teste123",
-      "password": "123",
-      "id": 7
-    },
-    {
-      "nickname": "marcelopintoiriadeabbadia",
-      "email": "teste1234",
-      "password": "123",
-      "id": 8
     },
     {
       "nickname": "troxa",
       "email": "123",
       "password": "123",
-      "id": 9
+      "champions": [],
+      "id": 4
     },
     {
-      "nickname": "campeao",
+      "nickname": "troxa2",
       "email": "456",
       "password": "123",
       "champions": [],
-      "id": 10
-    },
-    {
-      "nickname": "jose",
-      "email": "jose",
-      "password": "123",
-      "champions": [],
-      "id": 11
+      "id": 5
     }
   ]
 }

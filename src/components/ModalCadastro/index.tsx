@@ -11,12 +11,6 @@ import { LoginButton } from "../LoginButton";
 import { styles } from "./styles";
 import { createUserApi, Usuario } from "../../services/apiLocal";
 import Toast from "react-native-root-toast";
-import { Champion } from "../../services/api";
-import {
-  FavoritesContext,
-  FavoritesContextData,
-  useFavorites,
-} from "../../Context/contextFavoritos";
 
 interface ModalCadastroProps extends ModalProps {
   modal: boolean;
@@ -49,7 +43,7 @@ export const ModalCadastro = ({
       setModal(false);
       Toast.show("Usuário cadastrado com sucesso!", {
         duration: Toast.durations.SHORT,
-        position: Toast.positions.BOTTOM,
+        position: Toast.positions.CENTER,
         shadow: true,
         animation: true,
         hideOnPress: true,
@@ -59,7 +53,7 @@ export const ModalCadastro = ({
     } catch (err: any) {
       Toast.show(err.message, {
         duration: Toast.durations.SHORT,
-        position: Toast.positions.BOTTOM,
+        position: Toast.positions.CENTER,
       });
     }
   };

@@ -10,7 +10,6 @@ import {
 import { styles } from "./styles";
 import { getChampions, Champion, ChampionData } from "../../services/api";
 import { DarkModeContext } from "../../Context/darkModelContext";
-import { useRoute } from "@react-navigation/native";
 import { useFavorites } from "../../Context/contextFavoritos";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigatorProps } from "../../routes/MainStack";
@@ -23,10 +22,8 @@ export function Home() {
   );
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   const [greetings, setGreetings] = useState<string>("Bom dia");
-  const route = useRoute();
-  const name = (route.params as { nickname: string })?.nickname || "";
 
-  const { favorites, addFavorite, removeFavorite } = useFavorites();
+  const { favorites, nicknameHome } = useFavorites();
 
   useEffect(() => {
     async function fetchData() {
@@ -46,7 +43,7 @@ export function Home() {
     if (horaDeAgora < 12) {
       setGreetings("Bom dia,");
     } else if (horaDeAgora >= 12 && horaDeAgora < 18) {
-      setGreetings("Bom tarde,");
+      setGreetings("Boa tarde,");
     } else {
       setGreetings("Boa noite,");
     }
@@ -94,7 +91,7 @@ export function Home() {
             {greetings}
           </Text>
           <Text style={[styles.topText, darkMode && styles.topTextDark]}>
-            {name}
+            {nicknameHome}
           </Text>
         </View>
 

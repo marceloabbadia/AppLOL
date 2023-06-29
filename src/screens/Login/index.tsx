@@ -18,6 +18,7 @@ import Toast from "react-native-root-toast";
 import { DarkModeContext } from "../../Context/darkModelContext";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackNavigatorProps } from "../../routes/MainStack";
+import { useFavorites } from "../../Context/contextFavoritos";
 
 export const Login = () => {
   const [modalCadastro, setModalCadastro] = useState<boolean>(false);
@@ -26,6 +27,7 @@ export const Login = () => {
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
   const navigation = useNavigation<StackNavigationProp<StackNavigatorProps>>();
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+  const { setNicknameHome } = useFavorites();
 
   useEffect(() => {
     fetchUsuarios();
@@ -52,20 +54,23 @@ export const Login = () => {
     if (user) {
       Toast.show("Login feito com sucesso!", {
         duration: Toast.durations.SHORT,
-        position: Toast.positions.BOTTOM,
+        position: Toast.positions.CENTER,
         shadow: true,
         animation: true,
         hideOnPress: true,
         delay: 0,
       });
-      navigation.navigate("Home", { nickname });
+      setNicknameHome(user.nickname);
+      navigation.navigate("Home", {});
       setNickname("");
       setPassword("");
     } else {
       Toast.show("Nickname ou senha inválidos!", {
         duration: Toast.durations.SHORT,
-        position: Toast.positions.BOTTOM,
+        position: Toast.positions.CENTER,
       });
+      setNickname("");
+      setPassword("");
     }
   };
 
