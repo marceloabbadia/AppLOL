@@ -25,7 +25,7 @@ const ChatLOL = () => {
     backgroundColor: darkMode ? "#000000" : "#FFFFFF",
   };
 
-  const API_KEY = "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";
+  const API_KEY = "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";
 
   const handleSend = async (newMessages: IMessage[] = []) => {
     try {
@@ -46,6 +46,7 @@ const ChatLOL = () => {
         "lol",
         "heróis",
         "jogo lol",
+        "skill match up",
       ];
 
       if (!keywords.some((keyword) => messageText.includes(keyword))) {

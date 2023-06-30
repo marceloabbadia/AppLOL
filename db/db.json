@@ -1,51 +1,22 @@
 {
   "Usuarios": [
     {
-      "nickname": "teste",
-      "email": "teste",
+      "nickname": "amumu",
+      "email": "Amumu@teste",
       "password": "123",
-      "champions": [],
       "id": 1
     },
     {
-      "nickname": "teste1",
-      "email": "111",
+      "nickname": "treta",
+      "email": "1",
       "password": "123",
-      "champions": [],
       "id": 2
     },
     {
-      "nickname": "teste2",
-      "email": "11133",
+      "nickname": "teste",
+      "email": "teste@teste",
       "password": "123",
-      "champions": [],
       "id": 3
-    },
-    {
-      "nickname": "troxa",
-      "email": "123",
-      "password": "123",
-      "champions": [],
-      "id": 4
-    },
-    {
-      "nickname": "troxa2",
-      "email": "456",
-      "password": "123",
-      "champions": [],
-      "id": 5
-    },
-    {
-      "nickname": "eeee",
-      "email": "eeee",
-      "password": "eee",
-      "id": 6
-    },
-    {
-      "nickname": "treta",
-      "email": "dddd",
-      "password": "123",
-      "id": 7
     }
   ]
 }
