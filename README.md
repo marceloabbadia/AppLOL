@@ -1,6 +1,14 @@
-# appLOL
+<h1>Criação do AppLOL</h1> 
 
-Trabalho final do modulo de React Native com a criacao do appLOL
+Trabalho final em grupo do módulo de React Native na residência do Serratec. Foi criado um app com objetivo de auxiliar os jogadores do game LOL, apresentando algumas funcionalidades. O App consome a API dos Heóris trazendo suas principais características, e os usuários conseguem "marcar" seus preferidos, após seu cadastro e login. Desde a tela inicial, possui o modo "darkmode" que altera completa o visual do aplicativo, mudando até sua "skin". E uma das mais interessantes funcionalidades é o chatLOL, que utiliza a api do ChatGPT para responder informações sobre o jogo. Atenção: Apenas sobre o jogo LOL, pois foi colocado uma "segurança" para que o chatbot tenha uma resposta padrão sem o consumo da API, caso seja solicitado informações sobre qualquer outro assunto, assim evitando de consumir os tokens e gerar custos desnecessários.  
+
+Para criaçao desse aplicativo utilizamos o React Native, Gifted-Chat, consumo das API's do ChatGPT.
+
+Nosso trabalho ficou bastante "rico" de formas de contrução e funcionalidades, pois se trata de trabalho em grupo onde cada um tem seu modo de codificar. Nossa prioridade foi apenas nao deixar conflitos, fora isso o espaço estava liberado. Um exemplo disso é que temos consumo de APi's por fecth e outras por Axios.
+Exploramos bastante os Hooks do framework.
+
+Para criar o ChatLOL, foi necessário instalar o Gifted-Chat e a criação de uma Key_Api do Chat Gpt.  
+O Gifted-Chat é um kit de ferramentas de interface do usuário de bate-papo de código aberto para React Native que permite aos desenvolvedores criar facilmente interfaces de bate-papo em seus aplicativos móveis. 
 
 
 
